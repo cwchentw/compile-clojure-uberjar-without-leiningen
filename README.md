@@ -36,6 +36,10 @@ Hello World
 
 Pending.
 
+## For Clojure Learner
+
+If interested in the whole process to build a uber jar in vanilla tools, check the source of [build](/build/) script.
+
 ## Copyright
 
 Copyright (c) 2020 Michael Chen. Licensed under MIT.
