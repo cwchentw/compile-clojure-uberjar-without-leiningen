@@ -6,7 +6,9 @@ java -cp "clojure.jar:src" clojure.main \
   --eval "(compile 'hello)"
 
 cwd="$(pwd)";
-cd temp;
+root="$(dirname $0)";
+
+cd "$root/temp";
 
 jar xf ../clojure.jar;
 
