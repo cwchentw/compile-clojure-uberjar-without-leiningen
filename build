@@ -1,0 +1,17 @@
+#!/bin/sh
+
+mkdir temp;
+java -cp "clojure.jar:src" clojure.main \
+  --eval "(set! *compile-path* \"temp\")" \
+  --eval "(compile 'hello)"
+
+cwd="$(pwd)";
+cd temp;
+
+jar xf ../clojure.jar;
+
+echo "Main-Class: hello" > manifest.mf;
+
+jar cfm ../hello.jar manifest.mf * clojure;
+
+cd "$cwd";
