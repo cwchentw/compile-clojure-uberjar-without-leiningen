@@ -1,6 +1,15 @@
 #!/bin/sh
 
+# Check whether Java is available.
+if ! command -v java -version 2>/dev/null 1>&2;
+then
+  echo "No Java on the sytem" >&2;
+  exit 1;
+fi
+
 mkdir temp;
+
+# Compile hello.clj into temp.
 java -cp "clojure.jar:src" clojure.main \
   --eval "(set! *compile-path* \"temp\")" \
   --eval "(compile 'hello)"
@@ -14,6 +23,7 @@ jar xf ../clojure.jar;
 
 echo "Main-Class: hello" > manifest.mf;
 
+# Make a uberjar.
 jar cfm ../hello.jar manifest.mf * clojure;
 
 cd "$cwd";
