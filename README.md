@@ -17,6 +17,21 @@ We test our repo against OpenJDK.
 
 ## Usage
 
+### Windows
+
+Run *build.bat* script to build *hello.jar*:
+
+```
+> ./build.bat
+```
+
+Run *hello.jar* with Java:
+
+```
+> java -jar hello.jar
+Hello World
+```
+
 ### Unix
 
 Run *build* script to build *hello.jar*:
@@ -32,13 +47,9 @@ $ java -jar hello.jar
 Hello World
 ```
 
-### Windows
-
-Pending.
-
 ## For Clojure Learner
 
-If interested in the whole process to build a uber jar only with vanilla tools, check the source of [build](/build/) script.
+If interested in the whole process to build a uber jar only with vanilla tools, check the source of [build](/build/) script or [build.bat](/build.bat/) script.
 
 ## Copyright
 
