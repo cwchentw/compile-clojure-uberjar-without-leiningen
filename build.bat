@@ -14,7 +14,7 @@ md %rootdir%temp
 powershell -Command "Get-Command -Name Invoke-Clojure -ErrorAction SilentlyContinue" 1>nul 2>&1
 if "%ERRORLEVEL%" == "0" (
     echo Compile hello.clj with Clojure cli tool
-    call %rootdir%compile.bat
+    powershell -Command Invoke-Clojure compile.clj
 ) else (
     echo Compile hello.clj with plain Clojure
     java -cp "clojure.jar;src" clojure.main ^
