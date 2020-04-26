@@ -17,9 +17,7 @@ if "%ERRORLEVEL%" == "0" (
     powershell -Command Invoke-Clojure compile.clj
 ) else (
     echo Compile hello.clj with plain Clojure
-    java -cp "clojure.jar;src" clojure.main ^
-      --eval "(set! *compile-path* \"temp\")" ^
-      --eval "(compile 'hello)"
+    java -cp "clojure.jar;src" clojure.main compile.clj
 )
 
 cd %rootdir%temp || (
