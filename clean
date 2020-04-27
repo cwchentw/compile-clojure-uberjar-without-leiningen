@@ -2,4 +2,7 @@
 
 root="$(dirname $0)";
 
-rm -rf "$root/temp" "$root/hello.jar";
+rm -rf "$root/temp" "$root/hello.jar" || (
+  echo "Failed to remove output data" >&2;
+  exit 1;
+);

@@ -7,23 +7,44 @@ then
   exit 1;
 fi
 
-mkdir temp;
+cwd="$(pwd)";
+root="$(dirname $0)";
+
+mkdir "$root/temp" || (
+  echo "Failed to make directory $root/temp" >&2;
+  exit 1;
+);
 
 # Compile hello.clj into temp.
 java -cp "clojure.jar:src" clojure.main \
   --eval "(set! *compile-path* \"temp\")" \
-  --eval "(compile 'hello)"
+  --eval "(compile 'hello)" || (
+  echo "Failed to compile hello.clj" >&2;
+  exit 1;
+)
 
-cwd="$(pwd)";
-root="$(dirname $0)";
+cd "$root/temp" || (
+  echo "Failed to go to $root/temp" >&2;
+  exit 1;
+);
 
-cd "$root/temp";
+jar xf ../clojure.jar || (
+  echo "Failed to extract clojure.jar" >&2;
+  exit 1;
+);
 
-jar xf ../clojure.jar;
-
-echo "Main-Class: hello" > manifest.mf;
+echo "Main-Class: hello" > manifest.mf || (
+  echo "Failed to write manifest.mf" >&2;
+  exit 1;
+);
 
 # Make a uberjar.
-jar cfm ../hello.jar manifest.mf * clojure;
+jar cfm ../hello.jar manifest.mf * clojure || (
+  echo "Failed to make hello.jar" >&2;
+  exit 1;
+);
 
-cd "$cwd";
+cd "$cwd" || (
+  echo "Failed to go to $cwd" >&2;
+  exit 1;
+);
