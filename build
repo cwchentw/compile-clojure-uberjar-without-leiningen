@@ -16,9 +16,7 @@ mkdir "$root/temp" || (
 );
 
 # Compile hello.clj into temp.
-java -cp "clojure.jar:src" clojure.main \
-  --eval "(set! *compile-path* \"temp\")" \
-  --eval "(compile 'hello)" || (
+java -cp "clojure.jar:src" clojure.main compile.clj || (
   echo "Failed to compile hello.clj" >&2;
   exit 1;
 )
