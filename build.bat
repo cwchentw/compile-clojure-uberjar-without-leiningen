@@ -17,10 +17,16 @@ md %rootdir%temp || (
 powershell -Command "Get-Command -Name Invoke-Clojure -ErrorAction SilentlyContinue" 1>nul 2>&1
 if "%ERRORLEVEL%" == "0" (
     echo Compile hello.clj with Clojure cli tool
-    powershell -Command Invoke-Clojure compile.clj
+    powershell -Command Invoke-Clojure compile.clj || (
+        echo Failed to compile hello.clj >&2
+        exit /B 1
+    )
 ) else (
     echo Compile hello.clj with plain Clojure
-    java -cp "clojure.jar;src" clojure.main compile.clj
+    java -cp "clojure.jar;src" clojure.main compile.clj || (
+        echo Failed to compile hello.clj >&2
+        exit /B 1
+    )
 )
 
 cd %rootdir%temp || (
