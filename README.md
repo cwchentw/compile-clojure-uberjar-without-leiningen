@@ -1,10 +1,10 @@
-# Compile Clojure Uber JAR without Leiningin
+# Compile Clojure Uber JAR without Leiningen
 
 ## Why Re-inventing the Wheel?
 
-Contrary to common belief, [Leiningin](https://leiningen.org/) is not mandatory to build a uber jar from Clojure code base. In this repo, we build a tiny Clojure uber jar only with built-in Java tools and Clojure itself.
+Contrary to common belief, [Leiningen](https://leiningen.org/) is not mandatory to build a uber jar from Clojure code base. In this repo, we build a tiny Clojure uber jar only with built-in Java tools and Clojure itself.
 
-You should **NOT** adopt this pattern in production code. Instead, use community standard tools like Leiningin or [Boot](https://boot-clj.com/) to build your next awesome Clojure project. This repo is just a demonstration to a uber jar building process in vanilla.
+You should **NOT** adopt this pattern in production code. Instead, use community standard tools like Leiningen or [Boot](https://boot-clj.com/) to build your next awesome Clojure project. This repo is just a demonstration to a uber jar building process in vanilla.
 
 ## System Requirements
 
